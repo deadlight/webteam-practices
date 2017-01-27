@@ -9,3 +9,35 @@ General rules for all HTML documents are:
  - Tags and attributes should be lowercase (`<p class="intro">` not `<P CLASS="intro"`)
  - Use double quotes for attribute values
  - Close all elements - either a closeing tag (`<p>...</p>`) or self-closing (`<img src="jeff.jpg" />`)
+
+ ## Template tags
+
+ Template tags such as those found in Django templates should be indented as if they were nested HTML tags:
+ ```
+ <!--GOOD-->
+ {% if people %}
+   <ul>
+     {% for people as person %}
+       <li>{{ person.name }}</li>
+     {% endfor %}
+   </ul>
+ {% endif %}
+
+ <!--BAD-->
+ {% if people %}
+ <ul>
+ {% for people as person %}
+   <li>{{ person.name }}</li>
+ {% endfor %}
+ </ul>
+ {% endif %}
+
+ <!--BAD-->
+ {% if people %}
+ <ul>
+   {% for people as person %}
+   <li>{{ person.name }}</li>
+   {% endfor %}
+ </ul>
+ {% endif %}
+ ```
